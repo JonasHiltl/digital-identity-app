@@ -6,7 +6,8 @@ import '../../../models/personal_data/personal_data.dart';
 
 class CreateDidRepository {
   Future<DID?> createDid() async {
-    final _uri = Uri.https("did-backend.herokuapp.com", "/did/create");
+    final _uri =
+        Uri.https("digital-identity-backend.herokuapp.com", "/did/create");
     final res = await http.get(
       _uri,
     );
@@ -20,6 +21,7 @@ class CreateDidRepository {
   }
 
   Future<PersonalData?> createPersonalData(
+    String id,
     String firstName,
     String lastName,
     String email,
@@ -32,8 +34,8 @@ class CreateDidRepository {
     String postalCode,
     String country,
   ) async {
-    final _uri =
-        Uri.https("did-backend.herokuapp.com", "/personal-data/create");
+    final _uri = Uri.https(
+        "digital-identity-backend.herokuapp.com", "/personal-data/create");
     final res = await http.post(
       _uri,
       headers: <String, String>{

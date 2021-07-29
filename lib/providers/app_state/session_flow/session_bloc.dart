@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:digital_identity/db/secure_storage.dart';
+import 'package:digital_identity/models/did/did.dart';
+import 'package:digital_identity/models/personal_data/personal_data.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_auth/auth_strings.dart';
@@ -18,6 +21,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
 
   final SessionRepo repo;
   final AppSettingsState appSettingsState;
+  final SecureStorage secureStorage = SecureStorage();
   final _auth = LocalAuthentication();
 
   Future<bool> hasBiometric() async {
@@ -50,13 +54,60 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   Stream<SessionState> mapEventToState(SessionEvent event) async* {
     if (event is LaunchSession) {
       yield state.copyWith(
-          identity: event.identity,
+          did: event.did,
           personalDataVc: event.personalData,
           sessionStatus: Verified());
     } else if (event is AttemptGettingSavedState) {
-      yield state.copyWith(
-        sessionStatus: Unverified(),
-      );
+      Future<DID> getdid() async {
+        final encodedDid = await secureStorage.read("did");
+        final decodedDid = jsonDecode(
+          encodedDid.toString(),
+        ) as Map<String, dynamic>;
+        return DID.fromJson(decodedDid);
+      }
+
+      Future<PersonalData> getPersonalData() async {
+        final encodedPersonalDataVc = await secureStorage.read("personal-data");
+        final decodedPersonalDataVc = jsonDecode(
+          encodedPersonalDataVc.toString(),
+        ) as Map<String, dynamic>;
+        return PersonalData.fromJson(decodedPersonalDataVc);
+      }
+
+      try {
+        if (await secureStorage.contains("did") &&
+            await secureStorage.contains("personal-data")) {
+          final did = await getdid();
+          final personalDataVc = await getPersonalData();
+
+          if (await repo.verifyDid(did.id)) {
+            if (appSettingsState.useTouchID && await hasBiometric()) {
+              final isAuthenticated = await authenticate();
+
+              if (isAuthenticated) {
+                yield state.copyWith(
+                  did: did,
+                  personalDataVc: personalDataVc,
+                );
+                yield state.copyWith(sessionStatus: Verified());
+              }
+            } else {
+              yield state.copyWith(
+                did: did,
+                personalDataVc: personalDataVc,
+              );
+              yield state.copyWith(sessionStatus: Verified());
+            }
+          } else {
+            yield state.copyWith(sessionStatus: Unverified());
+          }
+        }
+      } catch (e) {
+        print("Sessioncubit error: $e");
+        yield state.copyWith(
+          sessionStatus: Unverified(),
+        );
+      }
     }
   }
 }

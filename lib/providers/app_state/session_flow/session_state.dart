@@ -11,12 +11,12 @@ import '../app_state.dart';
 
 class SessionState {
   SessionState({
-    this.identity,
+    this.did,
     this.personalDataVc,
     this.sessionStatus = const UnkownSessionStatus(),
   });
 
-  final DID? identity;
+  final DID? did;
   final PersonalData? personalDataVc;
   final SessionStatus sessionStatus;
 
@@ -25,12 +25,12 @@ class SessionState {
       );
 
   SessionState copyWith({
-    DID? identity,
+    DID? did,
     PersonalData? personalDataVc,
     SessionStatus? sessionStatus,
   }) {
     return SessionState(
-      identity: identity ?? this.identity,
+      did: did ?? this.did,
       personalDataVc: personalDataVc ?? this.personalDataVc,
       sessionStatus: sessionStatus ?? this.sessionStatus,
     );

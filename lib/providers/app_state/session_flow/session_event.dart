@@ -6,11 +6,11 @@ abstract class SessionEvent {}
 class AttemptGettingSavedState extends SessionEvent {}
 
 class LaunchSession extends SessionEvent {
-  final DID identity;
+  final DID did;
   final PersonalData personalData;
 
   LaunchSession({
-    required this.identity,
+    required this.did,
     required this.personalData,
   });
 }

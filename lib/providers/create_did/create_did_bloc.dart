@@ -42,6 +42,7 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
       yield state.copyWith(formStatus: FormSubmitting());
       DID? did;
       PersonalData? personalData;
+      String? id;
 
       try {
         final res = await repo.createDid();
@@ -51,6 +52,7 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
           yield state.copyWith(formStatus: const InitialFormStatus());
         } else {
           await secureStorage.write("did", jsonEncode(res));
+          id = res.id;
           did = res;
         }
       } catch (e) {
@@ -60,6 +62,7 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
       }
       try {
         final res = await repo.createPersonalData(
+          id!,
           state.firstName,
           state.lastName,
           state.email,
