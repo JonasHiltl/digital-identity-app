@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "conditions": MessageLookupByLibrary.simpleMessage("Conditions"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
             "Are you sure to irrevocably delete all of your data?"),
+        "contactInformation":
+            MessageLookupByLibrary.simpleMessage("Contact Information"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Your digital identity creation failed"),
@@ -75,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all data"),
         "deleteData": MessageLookupByLibrary.simpleMessage("Delete Data"),
+        "digitalIdentity":
+            MessageLookupByLibrary.simpleMessage("Digital Identity"),
         "disableFingerprint":
             MessageLookupByLibrary.simpleMessage("Disable Fingerprint"),
         "disableFingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -172,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medication"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
+        "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "receiveDocErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Failed to receive the document"),

@@ -11,8 +11,8 @@ class OwnQrImage extends StatelessWidget {
     return QrImage(
       data: data,
       size: 200.0,
-      backgroundColor: const Color(0xFFf7fbff),
-      foregroundColor: const Color(0xFF0B0C10),
+      padding: EdgeInsets.all(4),
+      foregroundColor: Theme.of(context).colorScheme.onBackground,
     );
   }
 }

@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "conditions": MessageLookupByLibrary.simpleMessage("Beschwerden"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
             "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?"),
+        "contactInformation":
+            MessageLookupByLibrary.simpleMessage("Kontaktinformationen"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Erstellung deiner digitalen Identität fehlgeschlagen"),
@@ -76,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Löschen"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Alle Daten löschen"),
         "deleteData": MessageLookupByLibrary.simpleMessage("Daten löschen"),
+        "digitalIdentity":
+            MessageLookupByLibrary.simpleMessage("Digitale Identität"),
         "disableFingerprint":
             MessageLookupByLibrary.simpleMessage("Fingerabdruck deaktivieren"),
         "disableFingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -170,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
+        "preferences": MessageLookupByLibrary.simpleMessage("Präferenzen"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "receiveDocErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Das Dokument konnte nicht empfangen werden"),

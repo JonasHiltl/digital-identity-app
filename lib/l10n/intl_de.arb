@@ -28,6 +28,10 @@
   "issued": "Erstellt am ",
   "cancel": "Abbrechen",
   "sharer": "Freigeber",
+  "digitalIdentity": "Digitale Identität",
+  "personalData": "Persönliche Daten",
+  "contactInformation": "Kontaktinformationen",
+  "preferences": "Präferenzen",
 
   "pluralMedication": "Medikamente",
   "personalInfoVC": "Persönliche Informationen Credential",
@@ -110,7 +114,6 @@
 
   "createdAt": "Erstellt am: ",
   "created": "Erstellt",
-  "personalData": "Persönliche Daten",
   "identity": "Identität",
   "settings": "Einstellungen",
   "security": "Sicherheit",

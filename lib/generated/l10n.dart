@@ -340,6 +340,46 @@ class L {
     );
   }
 
+  /// `Digital Identity`
+  String get digitalIdentity {
+    return Intl.message(
+      'Digital Identity',
+      name: 'digitalIdentity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Data`
+  String get personalData {
+    return Intl.message(
+      'Personal Data',
+      name: 'personalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Information`
+  String get contactInformation {
+    return Intl.message(
+      'Contact Information',
+      name: 'contactInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preferences`
+  String get preferences {
+    return Intl.message(
+      'Preferences',
+      name: 'preferences',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medication`
   String get pluralMedication {
     return Intl.message(
@@ -1055,16 +1095,6 @@ class L {
     return Intl.message(
       'Created',
       name: 'created',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Personal Data`
-  String get personalData {
-    return Intl.message(
-      'Personal Data',
-      name: 'personalData',
       desc: '',
       args: [],
     );

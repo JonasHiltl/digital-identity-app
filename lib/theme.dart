@@ -34,6 +34,9 @@ final appTheme = {
         color: Color(0xFF0B0C10),
       ),
     ),
+    iconTheme: IconThemeData(
+      color: Color(0xFF0B0C10).withOpacity(0.8),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
     ),
@@ -41,12 +44,12 @@ final appTheme = {
     dialogTheme: const DialogTheme(
       elevation: 18,
     ),
-    dividerColor: Colors.black38,
+    dividerColor: Colors.black12,
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF3861FB),
-      onBackground: Color(0xFF0B0C10),
       error: Color(0xFFef2b2d),
+      onBackground: Color(0xFF0B0C10),
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
@@ -75,7 +78,7 @@ final appTheme = {
         fontSize: 20,
       ),
       headline6: TextStyle(
-        color: Colors.black.withOpacity(0.85),
+        color: Colors.black.withOpacity(0.80),
         fontWeight: FontWeight.w600,
         fontSize: 16,
       ),
@@ -285,7 +288,8 @@ final appTheme = {
       ),
     ),
     cardTheme: CardTheme(
-      elevation: 4,
+      margin: EdgeInsets.all(0),
+      elevation: 1,
       shadowColor: Colors.black38,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
@@ -297,8 +301,9 @@ final appTheme = {
     primaryColor: const Color(0xFF3861FB),
     backgroundColor: const Color(0xFF141414),
     scaffoldBackgroundColor: const Color(0xFF141414),
-    colorScheme: const ColorScheme.dark(
+    colorScheme: ColorScheme.dark(
       primary: Color(0xFF3861FB),
+      onBackground: Color(0xFFe5e5e5),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color(0xFF141414),
@@ -307,45 +312,55 @@ final appTheme = {
     dialogTheme: const DialogTheme(
       elevation: 18,
     ),
+    appBarTheme: AppBarTheme(
+      elevation: 0.0,
+      backgroundColor: Color(0xFF141414),
+      iconTheme: IconThemeData(
+        color: Color(0xFFe5e5e5),
+      ),
+    ),
+    iconTheme: IconThemeData(
+      color: Color(0xFFe5e5e5).withOpacity(0.8),
+    ),
     dividerColor: Colors.white24,
     textTheme: TextTheme(
       headline1: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.w600,
         fontSize: 46,
       ),
       headline2: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.w600,
         fontSize: 38,
       ),
       headline3: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.w600,
         fontSize: 30,
       ),
       headline4: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.w600,
         fontSize: 24,
       ),
       headline5: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
       headline6: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFcccccc),
         fontWeight: FontWeight.w600,
         fontSize: 16,
       ),
       bodyText1: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontWeight: FontWeight.normal,
         fontSize: 16,
       ),
       bodyText2: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Color(0xFFe5e5e5),
         fontSize: 14,
       ),
     ),
@@ -544,7 +559,8 @@ final appTheme = {
       ),
     ),
     cardTheme: CardTheme(
-      elevation: 4,
+      elevation: 1,
+      margin: EdgeInsets.all(0),
       shadowColor: Colors.black38,
       color: kDarkAccentBG,
       shape: RoundedRectangleBorder(

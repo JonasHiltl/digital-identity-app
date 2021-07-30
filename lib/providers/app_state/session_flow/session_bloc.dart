@@ -101,6 +101,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
           } else {
             yield state.copyWith(sessionStatus: Unverified());
           }
+        } else {
+          yield state.copyWith(sessionStatus: Unverified());
         }
       } catch (e) {
         print("Sessioncubit error: $e");

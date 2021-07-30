@@ -28,6 +28,10 @@
   "issued": "Issued ",
   "cancel": "Cancel",
   "sharer": "Shared by",
+  "digitalIdentity": "Digital Identity",
+  "personalData": "Personal Data",
+  "contactInformation": "Contact Information",
+  "preferences": "Preferences",
 
   "pluralMedication": "Medication",
   "personalInfoVC": "Personal Information Credential",
@@ -109,7 +113,6 @@
 
   "createdAt": "Created at: ",
   "created": "Created",
-  "personalData": "Personal Data",
   "identity": "Identity",
   "settings": "Settings",
   "security": "Security",

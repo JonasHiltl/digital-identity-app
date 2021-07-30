@@ -16,31 +16,24 @@ class AppNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SessionBloc, SessionState>(
       builder: (context, state) {
-        return Navigator(
-          pages: [
-            if (state.sessionStatus is UnkownSessionStatus)
-              MaterialPage(child: StartupScreen()),
-            //show auth flow
-            if (state.sessionStatus is Unverified)
-              MaterialPage(
-                child: BlocProvider(
-                  create: (context) => AuthCubit(
-                    context.read<SessionBloc>(),
-                  ),
-                  child: AuthNavigator(),
+        return state.sessionStatus is Unverified
+            ? BlocProvider(
+                create: (context) => AuthCubit(
+                  context.read<SessionBloc>(),
                 ),
-              ),
-            //show session flow
-            if (state.sessionStatus is Verified)
-              MaterialPage(
-                child: Provider.value(
-                  value: state,
-                  child: SessionNavigator(),
-                ),
-              ),
-          ],
-          onPopPage: (route, result) => route.didPop(result),
-        );
+                child: AuthNavigator(),
+              )
+            : state.sessionStatus is Verified
+                ? Provider.value(
+                    value: state,
+                    child: SessionNavigator(),
+                  )
+                : StartupScreen();
+        //show auth flow
+
+        //show session flow
+
+        //onPopPage: (route, result) => route.didPop(result),
       },
     );
   }

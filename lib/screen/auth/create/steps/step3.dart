@@ -30,7 +30,7 @@ class _Step3State extends State<Step3> {
             children: [
               ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: viewportConstraints.maxHeight - 70,
+                  minHeight: viewportConstraints.maxHeight,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,6 +61,7 @@ class _Step3State extends State<Step3> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           UniversalTextField(
+                            keyboardType: TextInputType.streetAddress,
                             prefixText: L.of(context).streetNumber,
                             onChanged: (value) => context
                                 .read<CreateDidBloc>()
@@ -88,6 +89,7 @@ class _Step3State extends State<Step3> {
                             height: kMediumPadding,
                           ),
                           UniversalTextField(
+                            keyboardType: TextInputType.number,
                             prefixText: L.of(context).postalCode,
                             onChanged: (value) => context
                                 .read<CreateDidBloc>()

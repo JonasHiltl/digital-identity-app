@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               title: "Flutter Demo",
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
-              theme: appTheme[AppTheme.light],
+              theme: appTheme[state.themeData],
               localizationsDelegates: const [
                 L.delegate,
                 GlobalMaterialLocalizations.delegate,

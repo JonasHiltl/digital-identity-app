@@ -1,4 +1,5 @@
 import 'package:digital_identity/global_components/minimal_change_language.dart';
+import 'package:digital_identity/global_components/noti.dart';
 import 'package:digital_identity/providers/app_state/app_state.dart';
 import 'package:digital_identity/providers/create_did/create_did.dart';
 import 'package:digital_identity/screen/auth/create/steps/step2.dart';
@@ -6,6 +7,7 @@ import 'package:digital_identity/screen/auth/create/steps/step3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../theme.dart';
 import 'step_indicator.dart';
 import 'steps/step1.dart';
@@ -65,76 +67,91 @@ class _CreateState extends State<Create> {
                 vertical: kSmallPadding,
                 horizontal: kMediumPadding,
               ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: back,
-                        icon: Icon(Icons.arrow_back),
+              child: BlocListener<CreateDidBloc, CreateDidState>(
+                listener: (context, state) {
+                  if (state.formStatus is SubmissionSuccess) {
+                    showSuccessNoti(
+                        message: L.of(context).createSuccessMessage,
+                        context: context);
+                  } else if (state.formStatus is SubmissionFailed) {
+                    showErrorNoti(
+                        message: L.of(context).createErrorMessage,
+                        context: context);
+                  }
+                },
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          onPressed: back,
+                          icon: Icon(Icons.arrow_back),
+                        ),
+                        MinimalChangeLanguage(),
+                      ],
+                    ),
+                    Expanded(
+                      child: IndexedStack(
+                        index: index,
+                        children: [
+                          Step1(formKeys: formKeys),
+                          Step2(
+                              formKeys: formKeys,
+                              dateController: dateController),
+                          Step3(formKeys: formKeys),
+                        ],
                       ),
-                      MinimalChangeLanguage(),
-                    ],
-                  ),
-                  Expanded(
-                    child: IndexedStack(
-                      index: index,
-                      children: [
-                        Step1(formKeys: formKeys),
-                        Step2(
-                            formKeys: formKeys, dateController: dateController),
-                        Step3(formKeys: formKeys),
-                      ],
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: kSmallPadding),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              kSmallPadding * 2,
-                          child: BlocBuilder<CreateDidBloc, CreateDidState>(
-                            builder: (context, state) {
-                              return ElevatedButton(
-                                onPressed: state.formStatus is FormSubmitting ||
-                                        index == 0 &&
-                                            (!state.isValidFirstName ||
-                                                !state.isValidlastName) ||
-                                        index == 1 &&
-                                            (!state.isValidDateOfBirth ||
-                                                !state.isValidSex) ||
-                                        index == 2 &&
-                                            (!state.isValidAddress ||
-                                                !state.isValidCity ||
-                                                !state.isValidState ||
-                                                !state.isValidPostalCode ||
-                                                !state.isValidPostalCode ||
-                                                !state.isValidCountry)
-                                    ? null
-                                    : index == 2
-                                        ? () => context
-                                            .read<CreateDidBloc>()
-                                            .add(Submitted())
-                                        : next,
-                                child: Text("Create"),
-                              );
-                            },
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: kSmallPadding),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width -
+                                kSmallPadding * 2,
+                            child: BlocBuilder<CreateDidBloc, CreateDidState>(
+                              builder: (context, state) {
+                                return ElevatedButton(
+                                  onPressed: state.formStatus
+                                              is FormSubmitting ||
+                                          index == 0 &&
+                                              (!state.isValidFirstName ||
+                                                  !state.isValidlastName) ||
+                                          index == 1 &&
+                                              (!state.isValidDateOfBirth ||
+                                                  !state.isValidSex) ||
+                                          index == 2 &&
+                                              (!state.isValidAddress ||
+                                                  !state.isValidCity ||
+                                                  !state.isValidState ||
+                                                  !state.isValidPostalCode ||
+                                                  !state.isValidPostalCode ||
+                                                  !state.isValidCountry)
+                                      ? null
+                                      : index == 2
+                                          ? () => context
+                                              .read<CreateDidBloc>()
+                                              .add(Submitted())
+                                          : next,
+                                  child: Text("Create"),
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: kSmallPadding + 4,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 0),
-                          child: StepIndicator(index: index),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                          SizedBox(
+                            height: kSmallPadding + 4,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 0),
+                            child: StepIndicator(index: index),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

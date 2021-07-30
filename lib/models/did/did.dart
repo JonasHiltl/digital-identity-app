@@ -10,10 +10,12 @@ class DID {
     required this.id,
     required this.created,
     required this.key,
+    required this.messageId,
   });
   final String id;
   final String created;
   final Key key;
+  final String messageId;
 
   factory DID.fromJson(Map<String, dynamic> data) => _$DIDFromJson(data);
 

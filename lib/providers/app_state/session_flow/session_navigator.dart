@@ -1,7 +1,5 @@
+import 'package:digital_identity/screen/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'session_bloc.dart';
 
 class SessionNavigator extends StatefulWidget {
   @override
@@ -35,6 +33,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
       onWillPop: () async {
         final isFirstRouteInCurrentTab =
             !await _navigatorKeys[_currentPage]!.currentState!.maybePop();
+        print(isFirstRouteInCurrentTab);
         if (isFirstRouteInCurrentTab) {
           if (_currentPage != "Home") {
             _selectTab("Home", 1);
@@ -123,7 +122,7 @@ class TabNavigator extends StatelessWidget {
     } else if (tabItem == "manage") {
       child = Container();
     } else {
-      child = Container();
+      child = ManageApp();
     }
 
     return Navigator(
