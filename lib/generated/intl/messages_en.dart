@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "disableTouchIDText": MessageLookupByLibrary.simpleMessage(
             "Disable secure access to the App with Touch ID?"),
         "dose": MessageLookupByLibrary.simpleMessage("Dose"),
+        "edit": MessageLookupByLibrary.simpleMessage("edit"),
         "editProfile": MessageLookupByLibrary.simpleMessage(
             "You can only edit this data in settings"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -194,6 +195,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "After a valid code is recognised, the document will be requested"),
         "scanQR": MessageLookupByLibrary.simpleMessage("Scan QR-Code"),
+        "scanQrDIdId": MessageLookupByLibrary.simpleMessage(
+            "Scan this QR code to share your "),
+        "scanQrDIdId2":
+            MessageLookupByLibrary.simpleMessage("Decentralized Identifier."),
         "security": MessageLookupByLibrary.simpleMessage("Security"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
@@ -227,8 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update Date of Birth"),
         "updateEmail":
             MessageLookupByLibrary.simpleMessage("Update Email Address"),
-        "updateErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Aktualisierung deiner persönlichen Daten fehlgeschlagen"),
+        "updateErrorMessage":
+            MessageLookupByLibrary.simpleMessage(" Update failed"),
         "updateFirstName":
             MessageLookupByLibrary.simpleMessage("Update First Name"),
         "updateLastName":
@@ -262,6 +267,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Biological sex has been updated"),
         "updateSuccessState":
             MessageLookupByLibrary.simpleMessage("State has been updated"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "viewDidLedger":
+            MessageLookupByLibrary.simpleMessage("View DID on Ledger"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yourDecentralizedIdentifiers": MessageLookupByLibrary.simpleMessage(
+            "Your Decentralized Identifier")
       };
 }

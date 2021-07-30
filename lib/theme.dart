@@ -265,6 +265,8 @@ final appTheme = {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        minimumSize: MaterialStateProperty.all(Size.zero),
         elevation: MaterialStateProperty.all(0.0),
         padding: MaterialStateProperty.all(
           const EdgeInsets.fromLTRB(20, 12, 20, 12),
@@ -303,7 +305,7 @@ final appTheme = {
     scaffoldBackgroundColor: const Color(0xFF141414),
     colorScheme: ColorScheme.dark(
       primary: Color(0xFF3861FB),
-      onBackground: Color(0xFFe5e5e5),
+      onBackground: Color(0xFFf2f2f2),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color(0xFF141414),
@@ -316,36 +318,36 @@ final appTheme = {
       elevation: 0.0,
       backgroundColor: Color(0xFF141414),
       iconTheme: IconThemeData(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
       ),
     ),
     iconTheme: IconThemeData(
-      color: Color(0xFFe5e5e5).withOpacity(0.8),
+      color: Color(0xFFf2f2f2).withOpacity(0.8),
     ),
     dividerColor: Colors.white24,
     textTheme: TextTheme(
       headline1: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.w600,
         fontSize: 46,
       ),
       headline2: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.w600,
         fontSize: 38,
       ),
       headline3: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.w600,
         fontSize: 30,
       ),
       headline4: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.w600,
         fontSize: 24,
       ),
       headline5: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
@@ -355,12 +357,12 @@ final appTheme = {
         fontSize: 16,
       ),
       bodyText1: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontWeight: FontWeight.normal,
         fontSize: 16,
       ),
       bodyText2: TextStyle(
-        color: Color(0xFFe5e5e5),
+        color: Color(0xFFf2f2f2),
         fontSize: 14,
       ),
     ),
@@ -537,6 +539,8 @@ final appTheme = {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        minimumSize: MaterialStateProperty.all(Size.zero),
         elevation: MaterialStateProperty.all(0.0),
         padding: MaterialStateProperty.all(
             const EdgeInsets.fromLTRB(20, 12, 20, 12)),

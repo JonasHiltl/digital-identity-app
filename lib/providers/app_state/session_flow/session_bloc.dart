@@ -57,6 +57,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
           did: event.did,
           personalDataVc: event.personalData,
           sessionStatus: Verified());
+    } else if (event is ChangePersonalData) {
+      yield state.copyWith(personalDataVc: event.personalData);
     } else if (event is AttemptGettingSavedState) {
       Future<DID> getdid() async {
         final encodedDid = await secureStorage.read("did");

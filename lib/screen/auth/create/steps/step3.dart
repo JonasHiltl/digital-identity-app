@@ -71,6 +71,16 @@ class _Step3State extends State<Step3> {
                             height: kMediumPadding,
                           ),
                           UniversalTextField(
+                            keyboardType: TextInputType.number,
+                            prefixText: L.of(context).postalCode,
+                            onChanged: (value) => context
+                                .read<CreateDidBloc>()
+                                .add(PostalCodeChanged(postalCode: value)),
+                          ),
+                          const SizedBox(
+                            height: kMediumPadding,
+                          ),
+                          UniversalTextField(
                             prefixText: L.of(context).city,
                             onChanged: (value) => context
                                 .read<CreateDidBloc>()
@@ -84,16 +94,6 @@ class _Step3State extends State<Step3> {
                             onChanged: (value) => context
                                 .read<CreateDidBloc>()
                                 .add(StateChanged(state: value)),
-                          ),
-                          const SizedBox(
-                            height: kMediumPadding,
-                          ),
-                          UniversalTextField(
-                            keyboardType: TextInputType.number,
-                            prefixText: L.of(context).postalCode,
-                            onChanged: (value) => context
-                                .read<CreateDidBloc>()
-                                .add(PostalCodeChanged(postalCode: value)),
                           ),
                           const SizedBox(
                             height: kMediumPadding,

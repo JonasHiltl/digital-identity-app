@@ -89,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "disableTouchIDText": MessageLookupByLibrary.simpleMessage(
             "Sicheren Zugriff auf die App durch Touch ID deaktivieren?"),
         "dose": MessageLookupByLibrary.simpleMessage("Dosis"),
+        "edit": MessageLookupByLibrary.simpleMessage("bearbeiten"),
         "editProfile": MessageLookupByLibrary.simpleMessage(
             "Informationen nur in den Einstellungen bearbeitbar"),
         "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
@@ -191,6 +192,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "Nachdem ein gültiger Code erkannt wurde, wird das Dokument angefordert"),
         "scanQR": MessageLookupByLibrary.simpleMessage("QR-Code scannen"),
+        "scanQrDIdId": MessageLookupByLibrary.simpleMessage(
+            "Scanne diesen QR-Code, um deinen "),
+        "scanQrDIdId2": MessageLookupByLibrary.simpleMessage(
+            "Dezentralen Identifikator zu teilen."),
         "security": MessageLookupByLibrary.simpleMessage("Sicherheit"),
         "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "sex": MessageLookupByLibrary.simpleMessage("Biologisches Geschlecht"),
@@ -228,7 +233,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "updateEmail":
             MessageLookupByLibrary.simpleMessage("Email Adresse aktualisieren"),
         "updateErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Update of your personal data failed"),
+            "Aktualisierung fehlgeschlagen"),
         "updateFirstName":
             MessageLookupByLibrary.simpleMessage("Vornamen aktualisieren"),
         "updateLastName":
@@ -263,6 +268,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dein Geschlecht wurde aktualisiert"),
         "updateSuccessState": MessageLookupByLibrary.simpleMessage(
             "Dein Bundesland wurde aktualisiert"),
-        "yes": MessageLookupByLibrary.simpleMessage("Ja")
+        "viewDidLedger":
+            MessageLookupByLibrary.simpleMessage("DID auf Ledger ansehen"),
+        "yes": MessageLookupByLibrary.simpleMessage("Ja"),
+        "yourDecentralizedIdentifiers": MessageLookupByLibrary.simpleMessage(
+            "Dein Dezentraler Identifikator")
       };
 }

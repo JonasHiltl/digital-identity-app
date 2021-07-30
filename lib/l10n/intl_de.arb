@@ -29,9 +29,11 @@
   "cancel": "Abbrechen",
   "sharer": "Freigeber",
   "digitalIdentity": "Digitale Identität",
+  "yourDecentralizedIdentifiers": "Dein Dezentraler Identifikator",
   "personalData": "Persönliche Daten",
   "contactInformation": "Kontaktinformationen",
   "preferences": "Präferenzen",
+  "edit": "bearbeiten",
 
   "pluralMedication": "Medikamente",
   "personalInfoVC": "Persönliche Informationen Credential",
@@ -39,6 +41,9 @@
   "expiresAt": "Abgelaufen am: ",
   "unrestrictedAccess": "Unbeschränkter Zugriff",
 
+  "scanQrDIdId": "Scanne diesen QR-Code, um deinen ",
+  "scanQrDIdId2": "Dezentralen Identifikator zu teilen.",
+  "viewDidLedger": "DID auf Ledger ansehen",
 
   "patientQuestionnaire": "Patientenfragebogen",
   "patientQuestionnaires": "Patientenfragebogen",
@@ -145,7 +150,7 @@
   "updatePostalCode": "Postleitzahl aktualisieren",
   "updateCountry": "Land aktualisieren",
 
-  "updateErrorMessage": "Update of your personal data failed",
+  "updateErrorMessage": "Aktualisierung fehlgeschlagen",
   "updateSuccessFirstName": "Dein Vorname wurde aktualisiert",
   "updateSuccessLastName": "Dein Nachname wurde aktualisiert",
   "updateSuccessEmail": "Deine E-Mail wurde aktualisiert",

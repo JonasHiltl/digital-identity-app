@@ -11,6 +11,7 @@ class UniversalTextField extends StatefulWidget {
   final String prefixText;
   final String? initialValue;
   final TextInputType? keyboardType;
+  final bool? autofocus;
   final bool? readOnly;
   final Color? textColor;
   const UniversalTextField({
@@ -20,6 +21,7 @@ class UniversalTextField extends StatefulWidget {
     this.onChanged,
     this.initialValue,
     this.keyboardType,
+    this.autofocus,
     this.readOnly,
     this.textColor,
     this.onTap,
@@ -40,6 +42,7 @@ class _UniversalTextFieldState extends State<UniversalTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: widget.autofocus ?? false,
       keyboardType: widget.keyboardType,
       initialValue: widget.initialValue,
       style: Theme.of(context)

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../generated/l10n.dart';
+
 class Did extends StatelessWidget {
   const Did({Key? key}) : super(key: key);
 
@@ -33,18 +35,18 @@ class Did extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "Your Decentralized Identifier",
+                    L.of(context).yourDecentralizedIdentifiers,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   SizedBox(
                     height: kMediumPadding,
                   ),
                   Text(
-                    "Scan this QR code to share your ",
+                    L.of(context).scanQrDIdId,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Text(
-                    "Decentralized Identifier.",
+                    L.of(context).scanQrDIdId2,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ],
@@ -74,7 +76,7 @@ class Did extends StatelessWidget {
                             width: 4,
                           ),
                           Text(
-                            "View DID on Ledger",
+                            L.of(context).viewDidLedger,
                             style:
                                 Theme.of(context).textTheme.bodyText2!.copyWith(
                                       color: Theme.of(context).primaryColor,

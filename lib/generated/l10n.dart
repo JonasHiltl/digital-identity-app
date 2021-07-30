@@ -350,6 +350,16 @@ class L {
     );
   }
 
+  /// `Your Decentralized Identifier`
+  String get yourDecentralizedIdentifiers {
+    return Intl.message(
+      'Your Decentralized Identifier',
+      name: 'yourDecentralizedIdentifiers',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Personal Data`
   String get personalData {
     return Intl.message(
@@ -375,6 +385,16 @@ class L {
     return Intl.message(
       'Preferences',
       name: 'preferences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `edit`
+  String get edit {
+    return Intl.message(
+      'edit',
+      name: 'edit',
       desc: '',
       args: [],
     );
@@ -425,6 +445,36 @@ class L {
     return Intl.message(
       'Unrestricted Access',
       name: 'unrestrictedAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan this QR code to share your `
+  String get scanQrDIdId {
+    return Intl.message(
+      'Scan this QR code to share your ',
+      name: 'scanQrDIdId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decentralized Identifier.`
+  String get scanQrDIdId2 {
+    return Intl.message(
+      'Decentralized Identifier.',
+      name: 'scanQrDIdId2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View DID on Ledger`
+  String get viewDidLedger {
+    return Intl.message(
+      'View DID on Ledger',
+      name: 'viewDidLedger',
       desc: '',
       args: [],
     );
@@ -1390,10 +1440,10 @@ class L {
     );
   }
 
-  /// `Aktualisierung deiner persönlichen Daten fehlgeschlagen`
+  /// ` Update failed`
   String get updateErrorMessage {
     return Intl.message(
-      'Aktualisierung deiner persönlichen Daten fehlgeschlagen',
+      ' Update failed',
       name: 'updateErrorMessage',
       desc: '',
       args: [],
