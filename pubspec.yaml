@@ -9,12 +9,14 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  dart_jsonwebtoken: ^2.3.2
   device_preview: ^0.7.3
+  fast_base58: ^0.2.0
   fl_chart: ^0.36.3
   flash: ^2.0.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^7.1.0
   flutter_datetime_picker: ^1.5.1
   flutter_localizations:
     sdk: flutter
@@ -25,6 +27,7 @@ dependencies:
   http: ^0.13.3
   intl: ^0.17.0
   introduction_screen: ^2.1.0
+  jose: ^0.3.2
   json_annotation: ^4.0.1
   local_auth: ^1.1.6
   page_transition: ^2.0.2

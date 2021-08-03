@@ -1,21 +1,22 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class SessionRepo {
-  Future<bool> verifyDid(String id) async {
+  Future<String?> verifyDid(String id, String token) async {
     final _uri =
         Uri.https("digital-identity-backend.herokuapp.com", "/did/verify");
-    final res = await http.post(
+    final res = await http.get(
       _uri,
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': "Bearer $token",
       },
-      body: jsonEncode({"id": id}),
     );
     if (res.statusCode == 200) {
-      return true;
+      return jsonDecode(res.body);
     }
-    print(res.body);
-    return false;
+    return null;
   }
 }

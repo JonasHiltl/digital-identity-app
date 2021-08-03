@@ -178,7 +178,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
               : L.of(context).female,
           prefixText: L.of(context).sex,
           onTap: () async {
-            Navigator.push(
+            await Navigator.push(
               context,
               PageTransition(
                 type: PageTransitionType.fade,

@@ -15,12 +15,14 @@ class SessionState {
     this.did,
     this.personalDataVc,
     this.contactInformation,
+    this.jwt = "",
     this.sessionStatus = const UnkownSessionStatus(),
   });
 
   final DID? did;
   final PersonalData? personalDataVc;
   final ContactInformation? contactInformation;
+  final String jwt;
   final SessionStatus sessionStatus;
 
   SessionState clear() => SessionState(
@@ -31,12 +33,14 @@ class SessionState {
     DID? did,
     PersonalData? personalDataVc,
     ContactInformation? contactInformation,
+    String? jwt,
     SessionStatus? sessionStatus,
   }) {
     return SessionState(
       did: did ?? this.did,
       personalDataVc: personalDataVc ?? this.personalDataVc,
       contactInformation: contactInformation ?? this.contactInformation,
+      jwt: jwt ?? this.jwt,
       sessionStatus: sessionStatus ?? this.sessionStatus,
     );
   }

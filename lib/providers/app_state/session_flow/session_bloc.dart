@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:digital_identity/db/secure_storage.dart';
 import 'package:digital_identity/models/did/did.dart';
 import 'package:digital_identity/models/personal_data/personal_data.dart';
+import 'package:digital_identity/providers/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_auth/auth_strings.dart';
@@ -80,9 +81,15 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
         if (await secureStorage.contains("did") &&
             await secureStorage.contains("personal-data")) {
           final did = await getdid();
+
+          final secret = did.key.secret;
+          final public = did.key.public;
+          final token = generateJwt(did.id, public, secret);
+          final jwt = await repo.verifyDid(did.id, token);
+
           final personalDataVc = await getPersonalData();
 
-          if (await repo.verifyDid(did.id)) {
+          if (jwt != null) {
             if (appSettingsState.useTouchID && await hasBiometric()) {
               final isAuthenticated = await authenticate();
 
@@ -90,6 +97,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
                 yield state.copyWith(
                   did: did,
                   personalDataVc: personalDataVc,
+                  jwt: jwt,
                 );
                 yield state.copyWith(sessionStatus: Verified());
               }
@@ -97,6 +105,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
               yield state.copyWith(
                 did: did,
                 personalDataVc: personalDataVc,
+                jwt: jwt,
               );
               yield state.copyWith(sessionStatus: Verified());
             }
