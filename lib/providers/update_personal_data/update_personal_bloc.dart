@@ -4,10 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../db/secure_storage.dart';
 import '../../providers/app_state/app_state.dart';
-import 'form_submission_status.dart';
-import 'repository/update_personal_data_repo.dart';
-import 'update_personal_event.dart';
-import 'update_personal_state.dart';
+import 'update_personal_data.dart';
 
 class UpdatePersonalBloc
     extends Bloc<UpdatePersonalEvent, UpdatePersonalState> {

@@ -14,6 +14,9 @@ class CreateContactInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: confirm phone and email with code
+    // expand state with an emailCode and phoneNumber code which get generated and send
+    // when user clicks on sendCode. Just compare inputted code with code in state,
     final size = MediaQuery.of(context).size;
     return RepositoryProvider(
       create: (context) => CreateContactInformationRepo(),

@@ -1,8 +1,4 @@
-import 'form_submission_status.dart';
-
-final RegExp _emailRegExp = RegExp(
-  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-);
+import 'update_personal_data.dart';
 
 class UpdatePersonalState {
   UpdatePersonalState({
@@ -60,7 +56,7 @@ class UpdatePersonalState {
     FormSubmissionStatus? formStatus,
   }) {
     return UpdatePersonalState(
-      firstName: firstname ?? firstName,
+      firstName: firstname ?? this.firstName,
       lastName: lastName ?? this.lastName,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       sex: sex ?? this.sex,

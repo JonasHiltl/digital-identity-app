@@ -2,8 +2,10 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../providers/app_state/app_state.dart';
 
 class DeleteAllButton extends StatelessWidget {
   const DeleteAllButton({Key? key}) : super(key: key);
@@ -28,7 +30,10 @@ class DeleteAllButton extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<SessionBloc>().add(DeleteAll());
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         L.of(context).yes,
                         style: TextStyle(color: Theme.of(context).errorColor),
@@ -50,7 +55,10 @@ class DeleteAllButton extends StatelessWidget {
                       child: Text(L.of(context).no),
                     ),
                     CupertinoDialogAction(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<SessionBloc>().add(DeleteAll());
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         L.of(context).yes,
                         style: TextStyle(color: Theme.of(context).errorColor),

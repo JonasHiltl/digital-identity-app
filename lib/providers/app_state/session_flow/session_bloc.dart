@@ -63,6 +63,11 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
       );
     } else if (event is ChangePersonalData) {
       yield state.copyWith(personalDataVc: event.personalData);
+    } else if (event is DeleteAll) {
+      await secureStorage.delete("identity");
+      await secureStorage.delete("personal-data");
+      await secureStorage.delete("contact-information");
+      yield state.clear();
     } else if (event is AddContactInformation) {
       yield state.copyWith(contactInformation: event.contactInformation);
     } else if (event is AttemptGettingSavedState) {

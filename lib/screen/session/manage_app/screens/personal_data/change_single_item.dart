@@ -135,7 +135,7 @@ class ChangeSingleItem extends StatelessWidget {
                                         : kTextFieldDarkBorder,
                                   ),
                                 )
-                              : Text(L.of(context).updateFirstName),
+                              : Text(buttonText),
                         ),
                       )
                     ],

@@ -6,6 +6,8 @@ abstract class SessionEvent {}
 
 class AttemptGettingSavedState extends SessionEvent {}
 
+class DeleteAll extends SessionEvent {}
+
 class ChangePersonalData extends SessionEvent {
   final PersonalData personalData;
 

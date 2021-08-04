@@ -7,7 +7,6 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../../theme.dart';
-import '../personal_data/change_single_item.dart';
 
 class ContactInformation extends StatelessWidget {
   const ContactInformation({Key? key}) : super(key: key);
