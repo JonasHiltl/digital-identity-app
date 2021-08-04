@@ -1,7 +1,7 @@
 import 'package:digital_identity/data/countries.dart';
 import 'package:digital_identity/models/personal_data/credential_subject.dart';
 import 'package:digital_identity/screen/session/manage_app/components/grouped_tile.dart';
-import 'package:digital_identity/screen/session/manage_app/screens/change_country.dart';
+import 'package:digital_identity/screen/session/manage_app/screens/personal_data/change_country.dart';
 import 'package:digital_identity/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,7 @@ import 'package:digital_identity/providers/app_state/app_state.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import 'change_date_of_birth.dart';
 import 'change_sex.dart';
 import 'change_single_item.dart';
@@ -263,9 +263,6 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                                                   .withOpacity(0.6),
                                             ),
                                       ),
-                                      SizedBox(
-                                        width: kSmallPadding,
-                                      ),
                                       TextButton(
                                         style: ButtonStyle(
                                           padding: MaterialStateProperty.all(
@@ -296,7 +293,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                             ),
                             e.initialValue !=
                                     DateFormat.yMMMd().format(
-                                        personalData.dateOfBirth.toLocal())
+                                      personalData.dateOfBirth.toLocal(),
+                                    )
                                 ? Divider(
                                     height: 0,
                                   )

@@ -60,6 +60,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
           sessionStatus: Verified());
     } else if (event is ChangePersonalData) {
       yield state.copyWith(personalDataVc: event.personalData);
+    } else if (event is AddContactInformation) {
+      yield state.copyWith(contactInformation: event.contactInformation);
     } else if (event is AttemptGettingSavedState) {
       Future<DID> getdid() async {
         final encodedDid = await secureStorage.read("did");
@@ -85,11 +87,11 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
           final secret = did.key.secret;
           final public = did.key.public;
           final token = generateJwt(did.id, public, secret);
-          final jwt = await repo.verifyDid(did.id, token);
+          final confirmedJwt = await repo.verifyDid(did.id, token);
 
           final personalDataVc = await getPersonalData();
 
-          if (jwt != null) {
+          if (confirmedJwt != null) {
             if (appSettingsState.useTouchID && await hasBiometric()) {
               final isAuthenticated = await authenticate();
 
@@ -97,17 +99,17 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
                 yield state.copyWith(
                   did: did,
                   personalDataVc: personalDataVc,
-                  jwt: jwt,
+                  jwt: confirmedJwt,
+                  sessionStatus: Verified(),
                 );
-                yield state.copyWith(sessionStatus: Verified());
               }
             } else {
               yield state.copyWith(
                 did: did,
                 personalDataVc: personalDataVc,
-                jwt: jwt,
+                jwt: confirmedJwt,
+                sessionStatus: Verified(),
               );
-              yield state.copyWith(sessionStatus: Verified());
             }
           } else {
             yield state.copyWith(sessionStatus: Unverified());

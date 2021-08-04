@@ -6,8 +6,8 @@ import 'package:digital_identity/providers/app_state/app_state.dart';
 import 'package:digital_identity/data/countries.dart';
 import 'package:digital_identity/global_components/universal_text_field.dart';
 
-import '../../../../generated/l10n.dart';
-import '../../../../theme.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../theme.dart';
 
 class ChangeCountry extends StatefulWidget {
   const ChangeCountry({Key? key}) : super(key: key);

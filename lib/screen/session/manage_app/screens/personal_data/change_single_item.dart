@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:digital_identity/providers/app_state/app_state.dart';
 import 'package:digital_identity/providers/update_personal_data/update_personal_data.dart';
 
-import '../../../../generated/l10n.dart';
-import '../../../../theme.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../theme.dart';
 
 class ChangeSingleItem extends StatelessWidget {
   const ChangeSingleItem({

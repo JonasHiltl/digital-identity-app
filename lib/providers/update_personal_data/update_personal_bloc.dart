@@ -75,6 +75,7 @@ class UpdatePersonalBloc
 
       try {
         final res = await repo.updatePersonalVc(
+          sessionBloc.state.jwt,
           state.firstName,
           state.lastName,
           state.dateOfBirth,

@@ -8,8 +8,8 @@ import 'package:digital_identity/providers/update_personal_data/update_personal_
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../generated/l10n.dart';
-import '../../../../theme.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../theme.dart';
 
 class ChangeDateOfBirth extends StatefulWidget {
   const ChangeDateOfBirth({Key? key, required this.initialValue})

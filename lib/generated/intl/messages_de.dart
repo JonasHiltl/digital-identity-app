@@ -49,7 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?"),
         "contactInformation":
             MessageLookupByLibrary.simpleMessage("Kontaktinformationen"),
+        "contactInformationError": MessageLookupByLibrary.simpleMessage(
+            "Hinzufügen der Kontaktinformationen fehlgeschlagen"),
+        "contactInformationSuccess": MessageLookupByLibrary.simpleMessage(
+            "Erfolgreich Kontaktinformationen hinzugefügt"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
+        "createContactInformation": MessageLookupByLibrary.simpleMessage(
+            "Kontaktinformationen erstellen"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Erstellung deiner digitalen Identität fehlgeschlagen"),
         "createHeader":

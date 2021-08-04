@@ -21,11 +21,9 @@ class CreateDidRepository {
   }
 
   Future<PersonalData?> createPersonalData(
-    String id,
+    String token,
     String firstName,
     String lastName,
-    String email,
-    String phoneNumber,
     DateTime? dateOfBirth,
     String sex,
     String address,
@@ -39,13 +37,13 @@ class CreateDidRepository {
     final res = await http.post(
       _uri,
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
       },
       body: jsonEncode({
         "firstName": firstName.trim(),
         "lastName": lastName.trim(),
-        "email": email.trim(),
-        "phoneNumber": phoneNumber.trim(),
         "dateOfBirth": dateOfBirth?.toIso8601String(),
         "sex": sex.trim(),
         "address": address.trim(),

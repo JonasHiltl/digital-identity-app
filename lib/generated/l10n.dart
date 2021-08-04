@@ -380,6 +380,16 @@ class L {
     );
   }
 
+  /// `Add Contact Information`
+  String get createContactInformation {
+    return Intl.message(
+      'Add Contact Information',
+      name: 'createContactInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Preferences`
   String get preferences {
     return Intl.message(
@@ -775,6 +785,26 @@ class L {
     return Intl.message(
       'Failed to receive the document',
       name: 'receiveDocErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully added contact information`
+  String get contactInformationSuccess {
+    return Intl.message(
+      'Successfully added contact information',
+      name: 'contactInformationSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to add contact information`
+  String get contactInformationError {
+    return Intl.message(
+      'Failed to add contact information',
+      name: 'contactInformationError',
       desc: '',
       args: [],
     );

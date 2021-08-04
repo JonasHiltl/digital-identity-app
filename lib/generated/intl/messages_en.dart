@@ -47,7 +47,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure to irrevocably delete all of your data?"),
         "contactInformation":
             MessageLookupByLibrary.simpleMessage("Contact Information"),
+        "contactInformationError": MessageLookupByLibrary.simpleMessage(
+            "Failed to add contact information"),
+        "contactInformationSuccess": MessageLookupByLibrary.simpleMessage(
+            "Successfully added contact information"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
+        "createContactInformation":
+            MessageLookupByLibrary.simpleMessage("Add Contact Information"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Your digital identity creation failed"),
         "createHeader":

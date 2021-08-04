@@ -1,9 +1,10 @@
-import 'dart:convert';
-import 'package:digital_identity/models/personal_data/personal_data.dart';
-import 'package:http/http.dart' as http;
+import "dart:convert";
+import "package:digital_identity/models/personal_data/personal_data.dart";
+import "package:http/http.dart" as http;
 
 class UpdatePersonalDataRepo {
   Future<PersonalData?> updatePersonalVc(
+    String token,
     String firstName,
     String lastName,
     DateTime? dateOfBirth,
@@ -19,7 +20,9 @@ class UpdatePersonalDataRepo {
     final res = await http.post(
       _uri,
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
       },
       body: jsonEncode({
         "firstName": firstName.trim(),

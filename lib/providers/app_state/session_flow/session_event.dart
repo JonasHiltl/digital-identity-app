@@ -1,3 +1,4 @@
+import 'package:digital_identity/models/contact_information/contact_information.dart';
 import 'package:digital_identity/models/did/did.dart';
 import 'package:digital_identity/models/personal_data/personal_data.dart';
 
@@ -9,6 +10,12 @@ class ChangePersonalData extends SessionEvent {
   final PersonalData personalData;
 
   ChangePersonalData({required this.personalData});
+}
+
+class AddContactInformation extends SessionEvent {
+  final ContactInformation contactInformation;
+
+  AddContactInformation({required this.contactInformation});
 }
 
 class LaunchSession extends SessionEvent {

@@ -32,6 +32,7 @@
   "yourDecentralizedIdentifiers": "Your Decentralized Identifier",
   "personalData": "Personal Data",
   "contactInformation": "Contact Information",
+  "createContactInformation": "Add Contact Information",
   "preferences": "Preferences",
   "edit": "edit",
 
@@ -68,6 +69,7 @@
   "createSubheader2": "These information are securely stored on your device, you decide when and with whom you want to share it.",
   "createHeader3": "Residential Address",
   "createSubheader3": "Enter your residential address",
+
   "createSuccessMessage": "Digital Identity successfully created",
   "createErrorMessage": "Your digital identity creation failed",
   "createPQSuccessMessage": "Patient Questionnaire successfully created",
@@ -76,6 +78,8 @@
   "shareDocSuccessMessage": "Document is now retrievable",
   "receiveDocSuccessMessage": "Document successfully received",
   "receiveDocErrorMessage": "Failed to receive the document",
+  "contactInformationSuccess": "Successfully added contact information",
+  "contactInformationError": "Failed to add contact information",
 
   "shareDocExpiryDate": "Do you want to set an expiration date to your shared document?",
   "noExpiry": "No restriction",

@@ -1,7 +1,9 @@
 import 'dart:io' show Platform;
 
+import 'package:digital_identity/screen/session/manage_app/screens/contact_information/contact_informatio.dart';
+import 'package:digital_identity/screen/session/manage_app/screens/contact_information/create_contact_information.dart';
 import 'package:digital_identity/screen/session/manage_app/screens/did.dart';
-import 'package:digital_identity/screen/session/manage_app/screens/personal_data.dart';
+import 'package:digital_identity/screen/session/manage_app/screens/personal_data/personal_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -134,41 +136,54 @@ class _ManageAppState extends State<ManageApp> {
               Divider(
                 height: 0,
               ),
-              InkWell(
-                onTap: () {},
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: kMediumPadding,
-                    vertical: kSmallPadding,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+              BlocBuilder<SessionBloc, SessionState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        curve: Curves.easeInOut,
+                        child: state.contactInformation == null
+                            ? CreateContactInformation()
+                            : ContactInformation(),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kMediumPadding,
+                        vertical: kSmallPadding,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.phone_outlined,
+                                size: 22,
+                              ),
+                              const SizedBox(
+                                width: kSmallPadding,
+                              ),
+                              Text(
+                                L.of(context).contactInformation,
+                                style: Theme.of(context).textTheme.headline6,
+                              )
+                            ],
+                          ),
                           Icon(
-                            Icons.phone_outlined,
-                            size: 22,
-                          ),
-                          const SizedBox(
-                            width: kSmallPadding,
-                          ),
-                          Text(
-                            L.of(context).contactInformation,
-                            style: Theme.of(context).textTheme.headline6,
+                            sessionState.contactInformation == null
+                                ? Icons.add
+                                : Icons.chevron_right,
+                            size: 20,
+                            color: Theme.of(context).colorScheme.onSurface,
                           )
                         ],
                       ),
-                      Icon(
-                        sessionState.contactInformation == null
-                            ? Icons.add
-                            : Icons.chevron_right,
-                        size: 20,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      )
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               )
             ],
           ),

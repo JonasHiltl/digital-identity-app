@@ -57,6 +57,7 @@ class _CreateState extends State<Create> {
       create: (context) => CreateDidRepository(),
       child: BlocProvider<CreateDidBloc>(
         create: (context) => CreateDidBloc(
+          sessionBloc: context.read<SessionBloc>(),
           repo: context.read<CreateDidRepository>(),
           authCubit: context.read<AuthCubit>(),
         ),

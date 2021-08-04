@@ -11,11 +11,13 @@ import 'create_did.dart';
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   final CreateDidRepository repo;
   final AuthCubit authCubit;
+  final SessionBloc sessionBloc;
   final SecureStorage secureStorage = SecureStorage();
 
   CreateDidBloc({
     required this.repo,
     required this.authCubit,
+    required this.sessionBloc,
   }) : super(CreateDidState());
 
   @override
@@ -42,7 +44,6 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
       yield state.copyWith(formStatus: FormSubmitting());
       DID? did;
       PersonalData? personalData;
-      String? id;
 
       try {
         final res = await repo.createDid();
@@ -52,7 +53,6 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
           yield state.copyWith(formStatus: const InitialFormStatus());
         } else {
           await secureStorage.write("did", jsonEncode(res));
-          id = res.id;
           did = res;
         }
       } catch (e) {
@@ -62,11 +62,9 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
       }
       try {
         final res = await repo.createPersonalData(
-          id!,
+          sessionBloc.state.jwt,
           state.firstName,
           state.lastName,
-          state.email,
-          state.phoneNumber,
           state.dateOfBirth,
           state.sex,
           state.address,
