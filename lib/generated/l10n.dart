@@ -700,10 +700,10 @@ class L {
     );
   }
 
-  /// `Enter your residential address`
+  /// `Enter your residential address to securely share it whenever you want to.`
   String get createSubheader3 {
     return Intl.message(
-      'Enter your residential address',
+      'Enter your residential address to securely share it whenever you want to.',
       name: 'createSubheader3',
       desc: '',
       args: [],
@@ -965,6 +965,16 @@ class L {
     return Intl.message(
       'Back',
       name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
       desc: '',
       args: [],
     );

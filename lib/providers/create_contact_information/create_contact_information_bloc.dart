@@ -41,7 +41,7 @@ class CreateContactInformationBloc
                   SubmissionFailed("Backend error adding contact information"));
           yield state.copyWith(formStatus: const InitialFormStatus());
         } else {
-          await secureStorage.write("did", jsonEncode(res));
+          await secureStorage.write("contact-information", jsonEncode(res));
           yield state.copyWith(formStatus: SubmissionSuccess());
           sessionBloc.add(AddContactInformation(contactInformation: res));
         }

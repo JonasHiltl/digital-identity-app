@@ -17,6 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   void showIntroduction() => emit(AuthState.introduction);
   void showCreation() => emit(AuthState.creation);
 
-  void launchSession(DID identity, PersonalData personalData) =>
-      sessionBloc.add(LaunchSession(did: identity, personalData: personalData));
+  void launchSession(DID identity, PersonalData personalData, String jwt) =>
+      sessionBloc.add(
+          LaunchSession(did: identity, personalData: personalData, jwt: jwt));
 }

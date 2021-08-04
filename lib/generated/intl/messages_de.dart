@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactInformationSuccess": MessageLookupByLibrary.simpleMessage(
             "Erfolgreich Kontaktinformationen hinzugefügt"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
+        "create": MessageLookupByLibrary.simpleMessage("Erstellen"),
         "createContactInformation": MessageLookupByLibrary.simpleMessage(
             "Kontaktinformationen erstellen"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
@@ -74,7 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createSubheader2": MessageLookupByLibrary.simpleMessage(
             "Diese Informationen werden sicher auf deinem Gerät gespeichert, du entscheidest wann du sie teilen möchtest."),
         "createSubheader3": MessageLookupByLibrary.simpleMessage(
-            "Enter your residential address"),
+            "Gib deine Wohnadresse an, um sie sicher zu teilen, wann immer du willst."),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt"),
         "created": MessageLookupByLibrary.simpleMessage("Erstellt"),

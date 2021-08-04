@@ -21,9 +21,11 @@ class AddContactInformation extends SessionEvent {
 class LaunchSession extends SessionEvent {
   final DID did;
   final PersonalData personalData;
+  final String jwt;
 
   LaunchSession({
     required this.did,
     required this.personalData,
+    required this.jwt,
   });
 }

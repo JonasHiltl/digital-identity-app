@@ -68,7 +68,7 @@
   "createHeader2": "Ein paar persönliche Details",
   "createSubheader2": "Diese Informationen werden sicher auf deinem Gerät gespeichert, du entscheidest wann du sie teilen möchtest.",
   "createHeader3": "Wohnadresse",
-  "createSubheader3": "Enter your residential address",
+  "createSubheader3": "Gib deine Wohnadresse an, um sie sicher zu teilen, wann immer du willst.",
 
   "createSuccessMessage": "Digitale Identität erfolgreich erstellt",
   "createErrorMessage": "Erstellung deiner digitalen Identität fehlgeschlagen",
@@ -99,6 +99,7 @@
 
   "back": "Zurück",
   "next": "Weiter",
+  "create": "Erstellen",
   "submit": "Erstellen",
   "skip": "Überspringen",
   "yes": "Ja",

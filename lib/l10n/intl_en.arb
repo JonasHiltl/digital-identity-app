@@ -68,7 +68,7 @@
   "createHeader2": "Some personal details",
   "createSubheader2": "These information are securely stored on your device, you decide when and with whom you want to share it.",
   "createHeader3": "Residential Address",
-  "createSubheader3": "Enter your residential address",
+  "createSubheader3": "Enter your residential address to securely share it whenever you want to.",
 
   "createSuccessMessage": "Digital Identity successfully created",
   "createErrorMessage": "Your digital identity creation failed",
@@ -100,6 +100,7 @@
 
   "next": "Next",
   "back": "Back",
+  "create": "Create",
   "submit": "Submit",
   "skip": "Skip",
   "yes": "Yes",

@@ -6,6 +6,7 @@ import 'package:digital_identity/models/personal_data/personal_data.dart';
 import 'package:digital_identity/providers/app_state/app_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../utils.dart';
 import 'create_did.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
@@ -44,6 +45,7 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
       yield state.copyWith(formStatus: FormSubmitting());
       DID? did;
       PersonalData? personalData;
+      String? confirmedJwt;
 
       try {
         final res = await repo.createDid();
@@ -60,9 +62,21 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
         yield state.copyWith(formStatus: SubmissionFailed(e.toString()));
         yield state.copyWith(formStatus: const InitialFormStatus());
       }
+
+      try {
+        final secret = did?.key.secret;
+        final public = did?.key.public;
+        final token = generateJwt(did!.id, public!, secret!);
+        confirmedJwt = await repo.verifyDid(did.id, token);
+      } catch (e) {
+        yield state.copyWith(
+            formStatus: SubmissionFailed("Backend error creating Did"));
+        yield state.copyWith(formStatus: const InitialFormStatus());
+      }
+
       try {
         final res = await repo.createPersonalData(
-          sessionBloc.state.jwt,
+          confirmedJwt!,
           state.firstName,
           state.lastName,
           state.dateOfBirth,
@@ -80,6 +94,8 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
         } else {
           await secureStorage.write("personal-data", jsonEncode(res));
           personalData = res;
+          yield state.copyWith(formStatus: SubmissionSuccess());
+          yield state.copyWith(formStatus: const InitialFormStatus());
         }
       } catch (e) {
         print(e);
@@ -87,8 +103,8 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
         yield state.copyWith(formStatus: const InitialFormStatus());
       }
 
-      if (did != null && personalData != null) {
-        authCubit.launchSession(did, personalData);
+      if (did != null && personalData != null && confirmedJwt != null) {
+        authCubit.launchSession(did, personalData, confirmedJwt);
       }
     }
   }

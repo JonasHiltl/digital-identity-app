@@ -1,3 +1,4 @@
+import 'package:digital_identity/global_components/loading_indicator.dart';
 import 'package:digital_identity/global_components/minimal_change_language.dart';
 import 'package:digital_identity/global_components/noti.dart';
 import 'package:digital_identity/providers/app_state/app_state.dart';
@@ -136,7 +137,23 @@ class _CreateState extends State<Create> {
                                               .read<CreateDidBloc>()
                                               .add(Submitted())
                                           : next,
-                                  child: Text("Create"),
+                                  child: state.formStatus is FormSubmitting
+                                      ? Container(
+                                          height: 19,
+                                          width: 19,
+                                          margin: const EdgeInsets.fromLTRB(
+                                              7, 0, 7, 0),
+                                          child: LoadingIndicator(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? const Color(0xFFD9D9D9)
+                                                    : kTextFieldDarkBorder,
+                                          ),
+                                        )
+                                      : Text(index < 2
+                                          ? L.of(context).next
+                                          : L.of(context).create),
                                 );
                               },
                             ),

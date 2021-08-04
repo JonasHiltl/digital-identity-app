@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:digital_identity/db/secure_storage.dart';
+import 'package:digital_identity/models/contact_information/contact_information.dart';
 import 'package:digital_identity/models/did/did.dart';
 import 'package:digital_identity/models/personal_data/personal_data.dart';
 import 'package:digital_identity/providers/utils.dart';
@@ -55,9 +56,11 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   Stream<SessionState> mapEventToState(SessionEvent event) async* {
     if (event is LaunchSession) {
       yield state.copyWith(
-          did: event.did,
-          personalDataVc: event.personalData,
-          sessionStatus: Verified());
+        did: event.did,
+        personalDataVc: event.personalData,
+        jwt: event.jwt,
+        sessionStatus: Verified(),
+      );
     } else if (event is ChangePersonalData) {
       yield state.copyWith(personalDataVc: event.personalData);
     } else if (event is AddContactInformation) {
@@ -79,6 +82,19 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
         return PersonalData.fromJson(decodedPersonalDataVc);
       }
 
+      Future<ContactInformation?> getContactInformation() async {
+        if (await secureStorage.contains("contact-information")) {
+          final encodedContactinformation =
+              await secureStorage.read("contact-information");
+          final decodedContactinformation = jsonDecode(
+            encodedContactinformation.toString(),
+          ) as Map<String, dynamic>;
+          return ContactInformation.fromJson(decodedContactinformation);
+        } else {
+          return null;
+        }
+      }
+
       try {
         if (await secureStorage.contains("did") &&
             await secureStorage.contains("personal-data")) {
@@ -90,6 +106,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
           final confirmedJwt = await repo.verifyDid(did.id, token);
 
           final personalDataVc = await getPersonalData();
+          final contactInformation = await getContactInformation();
 
           if (confirmedJwt != null) {
             if (appSettingsState.useTouchID && await hasBiometric()) {
@@ -100,6 +117,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
                   did: did,
                   personalDataVc: personalDataVc,
                   jwt: confirmedJwt,
+                  contactInformation: contactInformation,
                   sessionStatus: Verified(),
                 );
               }
@@ -107,6 +125,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
               yield state.copyWith(
                 did: did,
                 personalDataVc: personalDataVc,
+                contactInformation: contactInformation,
                 jwt: confirmedJwt,
                 sessionStatus: Verified(),
               );
