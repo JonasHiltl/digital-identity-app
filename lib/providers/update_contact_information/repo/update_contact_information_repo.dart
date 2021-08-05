@@ -9,6 +9,12 @@ class UpdateContactInformationRepo {
     String email,
     String phoneNumber,
   ) async {
+    print(
+      jsonEncode({
+        "email": email.trim(),
+        "phoneNumber": phoneNumber.trim(),
+      }),
+    );
     final _uri = Uri.https("digital-identity-backend.herokuapp.com",
         "/contact-information/update");
     final res = await http.post(

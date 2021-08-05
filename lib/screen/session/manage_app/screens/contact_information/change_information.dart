@@ -76,6 +76,13 @@ class ChangeInformation extends StatelessWidget {
                         autofocus: true,
                         prefixText: prefixText,
                         initialValue: initialValue,
+                        errorText: prefixText == L.of(context).email
+                            ? state.isValidEmail
+                                ? null
+                                : L.of(context).invalidEmail
+                            : state.isValidPhoneNumber
+                                ? null
+                                : L.of(context).missingPhoneNumber,
                         onChanged: (value) =>
                             context.read<UpdateContactInformationBloc>().add(
                                   prefixText == L.of(context).email
