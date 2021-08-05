@@ -87,6 +87,8 @@ class ContactInformation extends StatelessWidget {
                                               .credentialSubject
                                               .email,
                                           buttonText: L.of(context).updateEmail,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
                                         ),
                                       ),
                                     );
@@ -158,6 +160,7 @@ class ContactInformation extends StatelessWidget {
                                     type: PageTransitionType.fade,
                                     curve: Curves.easeInOut,
                                     child: ChangeInformation(
+                                      keyboardType: TextInputType.phone,
                                       prefixText: L.of(context).phoneNumber,
                                       initialValue: sessionState
                                           .contactInformation!

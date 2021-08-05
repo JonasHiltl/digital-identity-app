@@ -1,5 +1,8 @@
 import 'package:digital_identity/global_components/loading_indicator.dart';
+import 'package:digital_identity/global_components/noti.dart';
 import 'package:digital_identity/global_components/universal_text_field.dart';
+import 'package:digital_identity/providers/update_contact_information/repo/update_contact_information_repo.dart';
+import 'package:digital_identity/providers/update_contact_information/update_contact_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,44 +42,86 @@ class ChangeInformation extends StatelessWidget {
             horizontal: kMediumPadding,
             vertical: kSmallPadding,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              UniversalTextField(
-                keyboardType: keyboardType,
-                autofocus: true,
-                prefixText: prefixText,
-                initialValue: initialValue,
+          child: RepositoryProvider(
+            create: (context) => UpdateContactInformationRepo(),
+            child: BlocProvider(
+              create: (context) => UpdateContactInformationBloc(
+                repo: context.read<UpdateContactInformationRepo>(),
+                sessionBloc: context.read<SessionBloc>(),
+                email: sessionState.contactInformation!.credentialSubject.email,
+                phoneNumber: sessionState
+                    .contactInformation!.credentialSubject.phoneNumber,
               ),
-              SizedBox(
-                width: size.width - kMediumPadding,
-                child: ElevatedButton(
-                  onPressed: false
-                      ? null
-                      : () {
-                          final FocusScopeNode currentFocus =
-                              FocusScope.of(context);
+              child: BlocConsumer<UpdateContactInformationBloc,
+                  UpdateContactInformationState>(
+                listener: (context, state) {
+                  if (state.formStatus is SubmissionSuccess) {
+                    showSuccessNoti(
+                      message: "Contact Information updated",
+                      context: context,
+                    );
+                    Navigator.pop(context);
+                  } else if (state.formStatus is SubmissionFailed) {
+                    showErrorNoti(
+                        message: "Failed to update Contact Information",
+                        context: context);
+                  }
+                },
+                builder: (context, state) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      UniversalTextField(
+                        keyboardType: keyboardType,
+                        autofocus: true,
+                        prefixText: prefixText,
+                        initialValue: initialValue,
+                        onChanged: (value) =>
+                            context.read<UpdateContactInformationBloc>().add(
+                                  prefixText == L.of(context).email
+                                      ? ChangeEmail(email: value)
+                                      : ChangePhoneNumber(phoneNumber: value),
+                                ),
+                      ),
+                      SizedBox(
+                        width: size.width - kMediumPadding,
+                        child: ElevatedButton(
+                          onPressed: state.oneIsInvalid ||
+                                  state.formStatus is Submitting
+                              ? null
+                              : () {
+                                  final FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
 
-                          if (!currentFocus.hasPrimaryFocus) {
-                            currentFocus.unfocus();
-                          }
-                        },
-                  child: true
-                      ? Container(
-                          height: 19,
-                          width: 19,
-                          margin: const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                          child: LoadingIndicator(
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? const Color(0xFFD9D9D9)
-                                    : kTextFieldDarkBorder,
-                          ),
-                        )
-                      : Text(L.of(context).updateFirstName),
-                ),
-              )
-            ],
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  context
+                                      .read<UpdateContactInformationBloc>()
+                                      .add(
+                                        Submit(),
+                                      );
+                                },
+                          child: state.formStatus is Submitting
+                              ? Container(
+                                  height: 19,
+                                  width: 19,
+                                  margin: const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                  child: LoadingIndicator(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? const Color(0xFFD9D9D9)
+                                        : kTextFieldDarkBorder,
+                                  ),
+                                )
+                              : Text(buttonText),
+                        ),
+                      )
+                    ],
+                  );
+                },
+              ),
+            ),
           ),
         ),
       ),
